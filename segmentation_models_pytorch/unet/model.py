@@ -49,7 +49,7 @@ class Unet(SegmentationModel):
 
     def __init__(
         self,
-        encoder_name: str = "resnet34",
+        encoder_name: str = "efficientnet-b1",
         encoder_depth: int = 5,
         encoder_weights: Optional[str] = "imagenet",
         decoder_use_batchnorm: bool = True,
