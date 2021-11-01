@@ -442,8 +442,8 @@ class MultiResolutionFPNMixConfClassBroadcast(nn.Module):
         else:
             self.fp1L = nn.Conv2d(320,256,kernel_size=1,stride=1,padding=0,bias=True)
             self.fp2L = nn.Conv2d(320,256,kernel_size=1,stride=1,padding=0,bias=True)
-            self.fp1S = nn.Conv2d(112,128,kernel_size=1,stride=1,padding=0,bias=True)
-            self.fp2S = nn.Conv2d(112,128,kernel_size=1,stride=1,padding=0,bias=True)
+            self.fp1S = nn.Conv2d(160,128,kernel_size=1,stride=1,padding=0,bias=True)
+            self.fp2S = nn.Conv2d(160,128,kernel_size=1,stride=1,padding=0,bias=True)
 
         # Switch to instance norm to see if this fixes things
         if opts.norm_class == 'instance_norm':
