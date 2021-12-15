@@ -409,10 +409,12 @@ class MultiResolutionFPNMixConfClassBroadcast(nn.Module):
 
         # Use a pretrained ResNet for the initial features
         if opts.network == 'resnet50' or True:
-            self.features = smp.Unet(opts.network, decoder_channels=(256,256,128,128,64), 
-                                        encoder_depth=5, classes=64, encoder_weights='imagenet', decoder_use_batchnorm=True)
+           self.features = smp.Unet(opts.network, decoder_channels=(256,256,128,128,64), 
+                                        encoder_depth=5, classes=64, encoder_weights='imagenet', full=True)
         else:
-            self.features = smp.FPN('resnet18', decoder_segmentation_channels=128, encoder_depth=5, classes=128, decoder_dropout=0., encoder_weights='imagenet')
+            self.features = smp.Unet('resnet18', decoder_channels=(256,128,128,64,64), 
+                                        encoder_depth=5, classes=64, encoder_weights='imagenet')
+            # self.features = smp.FPN('resnet18', decoder_segmentation_channels=128, encoder_depth=5, classes=128, decoder_dropout=0., encoder_weights='imagenet')
 
         def create_mlp(input_nc, nf, nl=2):
             layers = []
