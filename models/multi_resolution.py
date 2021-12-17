@@ -411,6 +411,7 @@ class MultiResolutionFPNMixConfClassBroadcast(nn.Module):
         if opts.network == 'resnet50' or True:
            self.features = smp.Unet(opts.network, decoder_channels=(256,256,128,128,64), 
                                         encoder_depth=5, classes=64, encoder_weights='imagenet')
+        print(self.features)
         else:
             self.features = smp.Unet('resnet18', decoder_channels=(256,128,128,64,64), 
                                         encoder_depth=5, classes=64, encoder_weights='imagenet')
