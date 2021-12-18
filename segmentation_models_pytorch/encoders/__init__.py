@@ -59,16 +59,32 @@ def get_encoder(name, in_channels=3, depth=5, weights=None, output_stride=32, **
 
     try:
         Encoder = encoders[name]["encoder"]
+        print("Encoder=")
+        print(Encoder)
+        #print("encoder=")
+        #print(encoder)
+        print("encoders=")
+        print(encoders)
+
     except KeyError:
         raise KeyError("Wrong encoder name `{}`, supported encoders: {}".format(name, list(encoders.keys())))
 
     params = encoders[name]["params"]
+    print("params")
+    print(params)
     params.update(depth=depth)
+    print("params.update")
+    print(params.update)
     encoder = Encoder(**params)
+    #print(**params)
+    print("encoder=")
+    print(encoder)
 
     if weights is not None:
         try:
             settings = encoders[name]["pretrained_settings"][weights]
+            print("settings")
+            print(settings)
         except KeyError:
             raise KeyError("Wrong pretrained weights `{}` for encoder `{}`. Available options are: {}".format(
                 weights, name, list(encoders[name]["pretrained_settings"].keys()),
