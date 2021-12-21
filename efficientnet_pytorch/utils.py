@@ -48,7 +48,10 @@ BlockArgs = collections.namedtuple('BlockArgs', [
 
 # Set GlobalParams and BlockArgs's defaults
 GlobalParams.__new__.__defaults__ = (None,) * len(GlobalParams._fields)
+print("len(GlobalParams._fields)",len(GlobalParams._fields))
+print("GlobalParams.__new__.__defaults__",GlobalParams.__new__.__defaults__)
 BlockArgs.__new__.__defaults__ = (None,) * len(BlockArgs._fields)
+print("len(BlockArgs._fields)",len(BlockArgs._fields))
 
 # Swish activation function
 if hasattr(nn, 'SiLU'):
